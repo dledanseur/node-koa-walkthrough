@@ -13,4 +13,14 @@ router.get('/', async (ctx, next) => {
   }
 })
 
+router.post('/', async (ctx, next) => {
+  try {
+    ctx.body = await userService.saveUser(ctx.request.body)
+  }
+  catch (e) {
+    console.log(e)
+    ctx.status = 500
+  }
+})
+
 module.exports = router
